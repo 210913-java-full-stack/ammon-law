@@ -1,5 +1,6 @@
 package MyArrayList;
 
+//interface for if I also wanted to use this for a linked list
 public interface MyList<T> {
     int size();
     void add(T t);

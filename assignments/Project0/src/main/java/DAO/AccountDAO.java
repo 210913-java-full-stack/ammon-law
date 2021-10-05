@@ -16,6 +16,8 @@ public class AccountDAO implements UserCrud<Account>{
         this.conn = conn;
     }
 
+    //given the user data other than the accountID, insert the data into the account table. Afterwards show the account
+    //id to the user to be used later
     @Override
     public void create(Account account) throws SQLException {
         String sql = "insert into accounts (userID, balance) VALUES (?, ?)";
@@ -31,6 +33,7 @@ public class AccountDAO implements UserCrud<Account>{
         account.setAccountID(rs.getInt("accountID"));
     }
 
+    //save the data a user has updated as well as make an account if the user hasn't been made one
     @Override
     public void save(Account a) throws SQLException {
         String sql = "SELECT * FROM accounts WHERE accountID = ?";
@@ -64,12 +67,13 @@ public class AccountDAO implements UserCrud<Account>{
     }
 
 
-    //to do
+    //didn't use
     @Override
     public Account getByID(int id){
         return null;
     }
 
+    //get account list that have the user id given
     public MyArrayList<Account> getByUserID(int id) throws SQLException{
         String sql = "SELECT * FROM accounts WHERE userID = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -87,11 +91,13 @@ public class AccountDAO implements UserCrud<Account>{
         return resultList;
     }
 
+    //didn't use
     @Override
     public MyArrayList<Account> getAll(){
         return null;
     }
 
+    //didn't use
     @Override
     public void deleteByID(int id){
 

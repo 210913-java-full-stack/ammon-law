@@ -3,7 +3,6 @@ package views;
 import DAO.UserDAO;
 import MyArrayList.MyArrayList;
 import models.User;
-import utils.ViewManager;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -14,6 +13,8 @@ public class Login extends View{
         super("Login", scanner);
     }
 
+    //setup the user dao and use it to get the list of users, then get a valid user id and password to go with it.
+    //If valid, continue to the user menu, else let the user choose what to do
     @Override
     public void renderView() throws SQLException {
         UserDAO dao = new UserDAO(viewManager.getConn());
@@ -52,6 +53,7 @@ public class Login extends View{
 
     }
 
+    //gets a valid user id from the user list
     private int userID(MyArrayList<User> userList)
     {
         String input;
@@ -76,6 +78,7 @@ public class Login extends View{
         return id;
     }
 
+    //have the user make a valid password
     private boolean password(User user)
     {
         String input;

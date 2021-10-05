@@ -11,6 +11,7 @@ public class CreateAccount extends View{
 
     public CreateAccount(Scanner scanner){super("CreateAccount",scanner);}
 
+    //make the initial details of the account and add it to the database, afterwards navigate to the choices given
     @Override
     public void renderView() throws SQLException {
         makeAccount();
@@ -31,6 +32,7 @@ public class CreateAccount extends View{
         }
     }
 
+    //make the user input a valid deposit and make an account with that
     private void makeAccount() throws SQLException {
         float balance=0;
         boolean run=true;
@@ -52,7 +54,7 @@ public class CreateAccount extends View{
                     run=false;
             }
             else {
-                balance = Float.parseFloat(input);
+                balance = Math.abs(Float.parseFloat(input));
                 run = false;
                 build = true;
             }

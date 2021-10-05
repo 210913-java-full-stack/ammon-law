@@ -11,6 +11,7 @@ public class AccountMenu extends View{
     }
     AccountDAO dao = new AccountDAO(viewManager.getConn());
 
+    //let the user choose to withdraw or deposit from the account, return to the user menu, or quit the application
     @Override
     public void renderView() throws SQLException {
         System.out.println("Account Menu\nEnter selection:\n\n1: Withdraw\n2: Deposit\n3:User Menu\nQ: Quit\n");
@@ -34,6 +35,7 @@ public class AccountMenu extends View{
         }
     }
 
+    //make users enter an amount and verify it's true. if so subtract that amount from the account
     private void withdraw() throws SQLException {
         float balance=viewManager.getCurrentAccount().getBalance();
         float withdraw;
@@ -64,6 +66,7 @@ public class AccountMenu extends View{
         }
     }
 
+    //make users enter an amount and verify it's true. if so add that amount from the account
     private void deposit() throws SQLException {
         float balance=viewManager.getCurrentAccount().getBalance();
         float deposit;

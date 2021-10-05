@@ -1,6 +1,5 @@
 package DAO;
 
-import DAO.UserCrud;
 import MyArrayList.MyArrayList;
 import models.Address;
 
@@ -19,6 +18,8 @@ public class AddressDAO implements UserCrud<Address> {
         this.conn = conn;
     }
 
+    //given the user data other than the addressID, insert the data into the address table. Afterwards show the address id to the
+    //user to be used later
     @Override
     public void create(Address address) throws SQLException {
         String sql = "insert into address (userID, streetName, streetNum) VALUES (?, ?, ?)";
@@ -35,6 +36,7 @@ public class AddressDAO implements UserCrud<Address> {
         address.setAddressID(rs.getInt("addressID"));
     }
 
+    //save the data a user has updated as well as make a user if the address hasn't been made
     @Override
     public void save(Address a) throws SQLException{
         String sql = "SELECT * FROM address WHERE addressID = ?";
@@ -70,22 +72,25 @@ public class AddressDAO implements UserCrud<Address> {
     }
 
 
-    //to do
+    //didn't use
     @Override
     public Address getByID(int id){
         return null;
     }
 
+    //didn't use
     @Override
     public MyArrayList<Address> getAll(){
         return null;
     }
 
+    //didn't use
     @Override
     public void deleteByID(int id){
 
     }
 
+    //get the list of addresses a user has by the user id the addresses have
     public MyArrayList<Address> getByUserID(int id) throws SQLException{
         String sql = "SELECT * FROM address WHERE userID = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);

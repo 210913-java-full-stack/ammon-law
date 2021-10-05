@@ -8,6 +8,7 @@ public class MainMenu extends View{
         super("MainMenu",scanner);
     }
 
+    //navigate to login or create user, or quit
     @Override
     public void renderView() {
         System.out.println("Main Menu\nEnter selection:\n\n1: Login as User\n2: Create User\nQ: Quit");

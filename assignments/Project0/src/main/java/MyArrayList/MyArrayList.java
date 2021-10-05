@@ -1,29 +1,31 @@
 package MyArrayList;
 
-import java.lang.reflect.Array;
-
 public class MyArrayList<T> implements MyList <T>{
     private int startSize=5;
     private int sizeMax;//size of the array
     private Object[] arrayList, temp;
     private int size=0;//size of elements in array
 
+    //make the array of length 5 and max size of 5
     public MyArrayList(){
         arrayList=new Object[startSize];
         sizeMax=startSize;
     }
 
+    //make the initial array of a certain size
     public MyArrayList(int size){
         arrayList=new Object[size];
         sizeMax=size;
     }
 
+    //return the size of the array
     @Override
     public int size()
     {
         return size;
     }
 
+    //add an object to the arraylist, if it's full, make the array bigger first
     @Override
     public void add(T t)
     {
@@ -34,6 +36,7 @@ public class MyArrayList<T> implements MyList <T>{
         size++;
     }
 
+    //same as add but in a specific index
     @Override
     public void add(T t, int i)
     {
@@ -97,6 +100,7 @@ public class MyArrayList<T> implements MyList <T>{
         return false;
     }
 
+    //make an array clone the current array, double the current, fill the current with the temp
     private void growArray()
     {
         temp = arrayList.clone();

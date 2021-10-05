@@ -2,7 +2,6 @@ package DAO;
 
 import MyArrayList.MyArrayList;
 import models.User;
-import utils.ConnectionManager;
 
 import java.sql.*;
 
@@ -12,13 +11,13 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 public class UserDAO implements UserCrud<User> {
     private Connection conn;
 
-    //private static UserDAO userDAO;
 
     public UserDAO(Connection conn){
-        //userDAO = this;
         this.conn = conn;
     }
 
+    //given the user data other than the userID, insert the data into the user table. Afterwards show the user id to the
+    //user to be used later
     @Override
     public void create(User user) throws SQLException {
         String sql = "insert into users (fName, lName, password, email) VALUES (?, ?, ?, ?)";
@@ -38,6 +37,7 @@ public class UserDAO implements UserCrud<User> {
         System.out.println("Your user ID is "+ user.getID()+".");
     }
 
+    //same as create user but also return the user id
     public int createGetID(User user) throws SQLException {
         String sql = "insert into users (fName, lName, password) VALUES (?, ?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(sql, RETURN_GENERATED_KEYS);
@@ -57,6 +57,7 @@ public class UserDAO implements UserCrud<User> {
         return user.getID();
     }
 
+    //save the data a user has updated as well as make a user if the user hasn't been made
     @Override
     public void save(User u) throws SQLException{
         String sql = "SELECT * FROM users WHERE userID = ?";
@@ -92,13 +93,14 @@ public class UserDAO implements UserCrud<User> {
         }
     }
 
-    //to do
+    //not used
     @Override
     public User getByID(int id){
 
         return null;
     }
 
+    //return list of users in the user table
     @Override
     public MyArrayList<User> getAll() throws SQLException
     {
@@ -117,16 +119,9 @@ public class UserDAO implements UserCrud<User> {
         return resultList;
     }
 
+    //not used
     @Override
     public void deleteByID(int id){
 
     }
-
-    //testing stuff
-    /*public UserDAO getInstance(Connection conn){
-        if (userDAO==null){
-            userDAO=new UserDAO(conn);
-        }
-        return userDAO;
-    }*/
 }

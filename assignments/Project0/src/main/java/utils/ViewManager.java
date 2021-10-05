@@ -19,6 +19,8 @@ public class ViewManager {
     private static User currentUser;
     private Account currentAccount;
 
+    //we make the viewManager static attribute to be used in the driver, the bool that allows the program to run, the array list of views that can be used,
+    //as well as the current view, user in use, and account in use.
     private ViewManager(){
         conn = ConnectionManager.getConnection();
         scanner = new Scanner(System.in);
@@ -41,6 +43,7 @@ public class ViewManager {
         return viewManager;
     }
 
+    //take the view name string and find the view with that name, then make the next view that view
     public void navigate(String destination){
         View view;
         for(int i=0; i<viewList.size(); i++){

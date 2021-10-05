@@ -15,6 +15,9 @@ public class ConnectionManager {
 
     }
 
+    //this method takes the database connection info in the connection properties file and builds the database url
+    // connection out of it. After that we attempt to get the connection to the database using the drivermanager to get
+    // the connection to put in our static conn
     public static Connection getConnection()
     {
         if(conn == null) {

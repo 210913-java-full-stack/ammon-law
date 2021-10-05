@@ -1,11 +1,10 @@
 package DAO;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import MyArrayList.MyArrayList;
-import models.User;
 
+//says user crud, but it's an interface used for all the dao
 public interface UserCrud<T> {
     public void create(T t) throws SQLException;
 

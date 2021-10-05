@@ -14,7 +14,8 @@ public class CreateUser extends View{
     }
 
 
-
+    //get the user to input valid first and last name, password, email, and address. Using the user dao, create the user in the
+    //database and return the user id. use the user id to make the address
     @Override
     public void renderView() throws SQLException {
         UserDAO dao = new UserDAO(viewManager.getConn());

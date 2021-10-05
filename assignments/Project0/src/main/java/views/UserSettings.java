@@ -17,6 +17,8 @@ public class UserSettings extends View{
         super("UserSettings",scanner);
     }
 
+    //get the user addresses and current user and show off that data. After that give the user the option to change any
+    //of it and save it or return to the user menu
     @Override
     public void renderView() throws SQLException {
         MyArrayList<Address> userAddresses = addressDAO.getByUserID(viewManager.getCurrentUser().getID());
@@ -51,6 +53,7 @@ public class UserSettings extends View{
         }
     }
 
+    //change the current user first name
     private void changeFName(){
         String input="";
         boolean run = true;
@@ -71,6 +74,7 @@ public class UserSettings extends View{
         viewManager.getCurrentUser().setfName(input);
     }
 
+    //change the current user last name
     private void changeLName(){
         String input="";
         boolean run = true;
@@ -91,6 +95,7 @@ public class UserSettings extends View{
         viewManager.getCurrentUser().setlName(input);
     }
 
+    //get a specific address
     private void pickAddress(MyArrayList<Address> list) throws SQLException {
         String input="";
         boolean run = true;
@@ -112,6 +117,7 @@ public class UserSettings extends View{
         addressDAO.save(list.get(Integer.parseInt(input)));
     }
 
+    //change the current user street name
     private String streetName()
     {
         String input="";
@@ -128,6 +134,7 @@ public class UserSettings extends View{
         return input;
     }
 
+    //change the current user street num
     private String streetNum()
     {
         String input="";

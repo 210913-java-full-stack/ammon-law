@@ -14,12 +14,14 @@ public class UserMenu extends View{
         super("UserMenu",scanner);
     }
 
+    //Show the accounts the user has, then have them decide if they want to do anything with those accounts or change
+    //the user data
     @Override
     public void renderView() throws SQLException {
 
         MyArrayList<Account> userAccounts = dao.getByUserID(viewManager.getCurrentUser().getID());
 
-        System.out.println("------Account List------");
+        System.out.println("------Account List------\n");
         for(int i=0; i<userAccounts.size(); i++){
             System.out.println("Account " + i+1 + ": Account Number " + userAccounts.get(i).getAccountID() + ", Balance " + userAccounts.get(i).getBalance());
         }
@@ -48,6 +50,7 @@ public class UserMenu extends View{
         }
     }
 
+    //used to pick a valid account and move to it's menu
     private boolean pickAccount(MyArrayList<Account> userAccounts){
         boolean run=true;
         boolean next=false;
